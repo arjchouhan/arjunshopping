@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Users;
+use App\Http\Controllers\Dashboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+Route::post('/userlog', [Users::class, 'user_login']);
+
+Route::get('users', [Users::class, 'index']);
+
+Route::get('/registration', [Users::class, 'registration']);
+Route::post('/users', [Users::class, 'user_register']);
