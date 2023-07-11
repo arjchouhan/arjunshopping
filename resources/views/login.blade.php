@@ -63,7 +63,15 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                    
                   </div>
-
+                  @if(count($errors) > 0)
+                    @foreach( $errors->all() as $message )
+                    <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                    <span>{{ $message }}</span>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                  </div>
+                    @endforeach
+                  @endif
+                  
                   <form class="row g-3 needs-validation" action="userlog" method="POST" novalidate>
                     @csrf
                     <div class="col-12">
@@ -74,7 +82,7 @@
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
                     </div>
-
+                    
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
@@ -86,7 +94,7 @@
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="#">Create an account</a></p>
+                      <p class="small mb-0">Don't have account? <a href="{{ route('user.registration') }}">Create an account</a></p>
                     </div>
                   </form>
 

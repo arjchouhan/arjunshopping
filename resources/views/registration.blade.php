@@ -54,7 +54,21 @@
                   <span class="d-none d-lg-block">ARJ-Shopping</span>
                 </a>
               </div><!-- End Logo -->
-
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+              @if (Session::has('success'))
+                  <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                        <span> {{ Session::get('success') }}</span>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              @endif
               <div class="card mb-3">
 
                 <div class="card-body">
@@ -93,12 +107,20 @@
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    
+                    <div class="col-12">
+                      <label for="mobile_no" class="form-label">Mobile No</label>
+                      <div class="input-group has-validation">
+                       
+                        <input type="text" name="mobile_no" class="form-control" id="mobile_no" required>
+                        <div class="invalid-feedback">Please enter your mobile no.</div>
+                      </div>
+                    </div>
+
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Create Account</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="{{ route('user.login_page') }}">Log in</a></p>
                     </div>
                   </form>
 

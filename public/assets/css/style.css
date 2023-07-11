@@ -1231,3 +1231,26 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.product-image {
+  position: relative;
+  
+}
+
+.product-image img {
+  transition: transform 0.3s;
+}
+
+.product-image:hover img {
+  transform: scale(3.0);
+}
+#imglist {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
